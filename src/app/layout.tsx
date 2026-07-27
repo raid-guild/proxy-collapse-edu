@@ -13,9 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Proxy Collapse — Interactive Comic",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://proxy-collapse-production.up.railway.app",
+  ),
+  title: {
+    default: "Raid Guild Comics",
+    template: "%s | Raid Guild Comics",
+  },
   description:
-    "An interactive Raid Guild comic about proxy collapse: when written signals of commitment become cheap to fake with LLMs.",
+    "Interactive illustrated field notes about technology, coordination, education, and the systems we build together.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

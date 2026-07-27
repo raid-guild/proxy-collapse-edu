@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { Hotspot } from "@/data/comic";
+import type { Hotspot } from "@/lib/comic-types";
 
 type Props = {
   hotspot: Hotspot | null;
@@ -18,11 +18,12 @@ export function Lightbox({ hotspot, onClose }: Props) {
     };
     window.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
+    const video = videoRef.current;
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
-      videoRef.current?.pause();
+      video?.pause();
     };
   }, [hotspot, onClose]);
 

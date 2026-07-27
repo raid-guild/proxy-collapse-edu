@@ -1,6 +1,6 @@
 "use client";
 
-import type { Hotspot } from "@/data/comic";
+import type { Hotspot } from "@/lib/comic-types";
 import { PageStage } from "./PageStage";
 
 type Props = {

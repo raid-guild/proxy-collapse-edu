@@ -6,9 +6,10 @@ type Props = {
   image: string;
   title: string;
   onBegin: () => void;
+  onWatch: () => void;
 };
 
-export function CoverView({ image, title, onBegin }: Props) {
+export function CoverView({ image, title, onBegin, onWatch }: Props) {
   return (
     <figure className="spread-figure">
       <PageStage className="page-stage--cover">
@@ -18,9 +19,14 @@ export function CoverView({ image, title, onBegin }: Props) {
         </button>
       </PageStage>
       <figcaption className="spread-caption">
-        <button type="button" className="begin-btn" onClick={onBegin}>
-          Open the book
-        </button>
+        <div className="cover-actions">
+          <button type="button" className="begin-btn" onClick={onBegin}>
+            Read the story
+          </button>
+          <button type="button" className="begin-btn begin-btn--watch" onClick={onWatch}>
+            <span aria-hidden>▶</span> Watch the story
+          </button>
+        </div>
         <p className="hint">Swipe or press →</p>
       </figcaption>
     </figure>
