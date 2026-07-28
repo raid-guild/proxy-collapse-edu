@@ -413,6 +413,6 @@ export const proxyCollapse: Comic = {
   readingTime: 8,
   publishedAt: "2026-07-27",
   status: "published",
-  featured: true,
+  featured: false,
   spreads,
 };

@@ -510,5 +510,6 @@ export const electricSheep: Comic = {
   readingTime: 18,
   publishedAt: "2026-07-27",
   status: "published",
+  featured: true,
   spreads,
 };
