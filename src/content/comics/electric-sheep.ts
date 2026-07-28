@@ -420,6 +420,7 @@ const spreads: ComicSpread[] = [
           "Requests, artifacts, judgments, and receipts connect without changing the historical records beneath them.",
         ...panel(1024, 76, 912, 976),
         image: "/comics/electric-sheep/panels/page6/02-provenance-memory.png",
+        animation: "page6-dream",
       },
       {
         id: "p6-3",
@@ -508,6 +509,6 @@ export const electricSheep: Comic = {
   topics: ["AI agents", "Governance", "Loop engineering"],
   readingTime: 18,
   publishedAt: "2026-07-27",
-  status: "draft",
+  status: "published",
   spreads,
 };

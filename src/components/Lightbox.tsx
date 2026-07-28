@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { Hotspot } from "@/lib/comic-types";
+import { LivingWoodcut } from "./LivingWoodcut";
 
 type Props = {
   hotspot: Hotspot | null;
@@ -30,6 +31,7 @@ export function Lightbox({ hotspot, onClose }: Props) {
   if (!hotspot) return null;
 
   const isVideo = Boolean(hotspot.video);
+  const isAnimation = Boolean(hotspot.animation);
 
   return (
     <div
@@ -39,12 +41,19 @@ export function Lightbox({ hotspot, onClose }: Props) {
       aria-labelledby="lightbox-title"
       onClick={onClose}
     >
-      <div className="lightbox-panel" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`lightbox-panel ${isAnimation ? "has-animation" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button type="button" className="lightbox-close" onClick={onClose} aria-label="Close">
           ×
         </button>
 
-        <div className={`lightbox-media ${isVideo ? "is-video" : "is-image"}`}>
+        <div
+          className={`lightbox-media ${
+            isVideo ? "is-video" : isAnimation ? "is-animation" : "is-image"
+          }`}
+        >
           {isVideo ? (
             <video
               ref={videoRef}
@@ -56,6 +65,8 @@ export function Lightbox({ hotspot, onClose }: Props) {
               poster={hotspot.image}
               className="lightbox-video"
             />
+          ) : isAnimation ? (
+            <LivingWoodcut scene={hotspot.animation!} label={hotspot.label} />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -66,7 +77,7 @@ export function Lightbox({ hotspot, onClose }: Props) {
           )}
         </div>
 
-        {!isVideo && (
+        {!isVideo && !isAnimation && (
           <footer className="lightbox-caption-block">
             <p id="lightbox-title" className="lightbox-label">
               {hotspot.label}
@@ -75,13 +86,15 @@ export function Lightbox({ hotspot, onClose }: Props) {
           </footer>
         )}
 
-        {isVideo && (
+        {(isVideo || isAnimation) && (
           <footer className="lightbox-caption-block">
             <p id="lightbox-title" className="lightbox-label">
               {hotspot.label}
             </p>
             <p className="lightbox-caption">{hotspot.caption}</p>
-            <p className="lightbox-hint">Animated panel · Esc to close</p>
+            <p className="lightbox-hint">
+              {isAnimation ? "Live canvas scene" : "Animated panel"} · Esc to close
+            </p>
           </footer>
         )}
       </div>

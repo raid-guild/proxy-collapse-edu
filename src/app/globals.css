@@ -1219,6 +1219,118 @@ button {
   max-height: min(68dvh, 620px);
 }
 
+.lightbox-media.is-animation {
+  width: 100%;
+  max-height: none;
+  line-height: 0;
+  background: #080706;
+}
+
+.lightbox-panel.has-animation {
+  width: min(680px, 92vw, calc(87dvh - 8rem));
+}
+
+.living-woodcut {
+  position: relative;
+  width: 100%;
+  line-height: normal;
+  background: #080706;
+}
+
+.living-woodcut-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 966;
+  touch-action: none;
+}
+
+.living-woodcut-loading {
+  position: absolute;
+  inset: 45% 0 auto;
+  margin: 0;
+  color: var(--parchment);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.living-woodcut-controls {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.65rem;
+  display: flex;
+  gap: 0.4rem;
+  line-height: 1;
+}
+
+.living-woodcut-controls button {
+  padding: 0.42rem 0.58rem;
+  border: 1px solid rgba(236, 226, 208, 0.75);
+  background: rgba(12, 9, 7, 0.82);
+  color: var(--parchment);
+  font: 0.7rem var(--font-ui);
+  cursor: pointer;
+}
+
+.living-woodcut-controls button:hover,
+.living-woodcut-controls button:focus-visible {
+  border-color: var(--accent-glow);
+  background: rgba(109, 20, 24, 0.9);
+  outline: none;
+}
+
+.living-woodcut-controls button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+@media (max-width: 640px) {
+  .living-woodcut-controls {
+    right: 0.4rem;
+    bottom: 0.4rem;
+  }
+}
+
+@media (max-height: 560px) and (min-width: 600px) {
+  .lightbox-panel.has-animation {
+    width: min(94vw, 760px);
+    height: min(94dvh, 520px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(240px, 0.92fr);
+    grid-template-rows: 100%;
+  }
+
+  .lightbox-panel.has-animation .lightbox-media {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .lightbox-panel.has-animation .living-woodcut {
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .lightbox-panel.has-animation .living-woodcut-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .lightbox-panel.has-animation .lightbox-caption-block {
+    min-height: 0;
+    overflow: auto;
+    border-top: 0;
+    border-left: 1px solid #2e241c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .lightbox-image {
   width: 100%;
   height: 100%;

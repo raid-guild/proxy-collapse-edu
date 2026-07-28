@@ -39,7 +39,7 @@ export default function Home() {
       )}
 
       <section className="library-coming-soon" aria-labelledby="coming-soon-heading">
-        <p>Issue 02</p>
+        <p>Next issue</p>
         <h2 id="coming-soon-heading">More field notes are being drawn.</h2>
         <span>New comics will appear here as the library grows.</span>
       </section>

@@ -30,7 +30,9 @@ export function ComicPageView({ image, title, act, hotspots, onHotspot }: Props)
                 height: `${h.height}%`,
               }}
               aria-label={
-                h.video ? `Play animation: ${h.label}` : `Open panel: ${h.label}`
+                h.video || h.animation
+                  ? `Open animation: ${h.label}`
+                  : `Open panel: ${h.label}`
               }
               title={h.label}
               onClick={(e) => {
@@ -38,7 +40,9 @@ export function ComicPageView({ image, title, act, hotspots, onHotspot }: Props)
                 onHotspot(h);
               }}
             >
-              {h.video && <span className="hotspot-play" aria-hidden />}
+              {(h.video || h.animation) && (
+                <span className="hotspot-play" aria-hidden />
+              )}
             </button>
           ))}
         </div>
@@ -47,7 +51,8 @@ export function ComicPageView({ image, title, act, hotspots, onHotspot }: Props)
         {act && <span className="act-tag">{act}</span>}
         <span>{title}</span>
         <span className="hint">
-          Tap a panel to zoom{hotspots.some((h) => h.video) ? " or play" : ""}
+          Tap a panel to zoom
+          {hotspots.some((h) => h.video || h.animation) ? " or play" : ""}
         </span>
       </figcaption>
     </figure>

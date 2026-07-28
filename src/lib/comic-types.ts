@@ -9,6 +9,8 @@ export type Hotspot = {
   height: number;
   image: string;
   video?: string;
+  /** Optional code-driven scene rendered inside the lightbox. */
+  animation?: "page6-dream";
 };
 
 export type WatchCue = {
